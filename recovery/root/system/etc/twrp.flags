@@ -5,10 +5,10 @@
 /recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1
 /vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
 
-/system ext4		/dev/block/mapper/system		flags=display="SYSTEM";wipeingui;logical
-/odm ext4		/dev/block/mapper/odm		flags=display="ODM";wipeingui;logical
-/product	ext4		/dev/block/mapper/product		flags=display="Product";wipeingui;logical
-/vendor	ext4 /dev/block/mapper/vendor		flags=display="VENDOR";wipeingui;logical
+/system ext4		/dev/block/mapper/system		flags=display=system;wipeingui;logical
+/odm ext4		/dev/block/mapper/odm		flags=display=odm;wipeingui;logical
+/product	ext4		/dev/block/mapper/product		flags=display=product;wipeingui;logical
+/vendor	ext4 /dev/block/mapper/vendor		flags=display=vendor;wipeingui;logical
 /system_image	emmc		/dev/block/mapper/system		flags=backup=1;flashimg=1
 /odm_image	emmc		/dev/block/mapper/odm		flags=backup=1;flashimg=1;display="ODM Image"
 /product_image	emmc		/dev/block/mapper/product		flags=backup=1;flashimg=1;display="Product Image"
