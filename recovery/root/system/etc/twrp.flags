@@ -9,10 +9,10 @@
 /odm           f2fs         /dev/block/mapper/odm           flags=wipeingui;display="ODM"
 /product       f2fs         /dev/block/mapper/product       flags=wipeingui;display="Product"
 /vendor        f2fs         /dev/block/mapper/vendor        flags=wipeingui;display="Vendor"
-/system_image	  emmc 		/dev/block/by-name/system		flags=backup=1;flashimg=1
+/system_image	  emmc 		/dev/block/by-name/system		flags=backup=1;flashimg=1;display="System Image"
 /odm_image	  emmc 		/dev/block/by-name/odm		flags=backup=1;flashimg=1;display="ODM Image"
 /product_image	  emmc 		/dev/block/by-name/product		flags=backup=1;flashimg=1;display="Product Image"
-/vendor_image	  emmc		 /dev/block/by-name/vendor		flags=backup=1;flashimg=1
+/vendor_image	  emmc		 /dev/block/by-name/vendor		flags=backup=1;flashimg=1;display="Vendor Image"
 
 /cache		ext4		/dev/block/bootdevice/by-name/cache
 /efs		ext4		/dev/block/bootdevice/by-name/efs		flags=backup=1;display="EFS"
