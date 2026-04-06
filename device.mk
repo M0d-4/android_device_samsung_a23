@@ -17,6 +17,7 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 
 # fastbootd
 TW_INCLUDE_FASTBOOTD := true
+OF_ENABLE_FASTBOOTD := 1
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
     android.hardware.fastboot@1.0-impl-mock.recovery \
