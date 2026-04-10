@@ -150,6 +150,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone50/temp"
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
+TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_NO_LEGACY_PROPS := true
 TW_BACKUP_EXCLUSIONS := /data/fonts
