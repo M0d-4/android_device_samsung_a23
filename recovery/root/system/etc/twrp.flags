@@ -5,15 +5,15 @@
 /recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1
 /vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
 
-/super         emmc    /dev/block/bootdevice/by-name/super    flags=display="Super";backup=1
-/system        f2fs    /dev/block/mapper/system    flags=wipeingui;display="System";subpartitionof=/super
-/odm           f2fs    /dev/block/mapper/odm        flags=wipeingui;display="ODM";subpartitionof=/super
-/product       f2fs    /dev/block/mapper/product    flags=wipeingui;display="Product";subpartitionof=/super
-/vendor        f2fs    /dev/block/mapper/vendor     flags=wipeingui;display="Vendor";subpartitionof=/super
-/system_image	  emmc 		/dev/block/bootdevice/by-name/system		flags=backup=1;flashimg=1;display="System Image"
-/odm_image	  emmc 		/dev/block/bootdevice/by-name/odm		flags=backup=1;flashimg=1;display="ODM Image"
-/product_image	  emmc 		/dev/block/bootdevice/by-name/product		flags=backup=1;flashimg=1;display="Product Image"
-/vendor_image	  emmc		 /dev/block/bootdevice/by-name/vendor		flags=backup=1;flashimg=1;display="Vendor Image"
+/system        f2fs    /dev/block/mapper/system    flags=display="System";wipeingui;
+/odm           f2fs    /dev/block/mapper/odm        flags=display="ODM";wipeingui;
+/product       f2fs    /dev/block/mapper/product    flags=display="Product";wipeingui;
+/vendor        f2fs    /dev/block/mapper/vendor     flags=display="Vendor";wipeingui;
+
+/system_image  emmc    /dev/block/mapper/system    flags=display="System Image";backup=1;flashimg=1;
+/odm_image     emmc    /dev/block/mapper/odm        flags=display="ODM Image";backup=1;flashimg=1;
+/product_image emmc    /dev/block/mapper/product    flags=display="Product Image";backup=1;flashimg=1;
+/vendor_image  emmc    /dev/block/mapper/vendor     flags=display="Vendor Image";backup=1;flashimg=1;
 
 /cache		ext4		/dev/block/bootdevice/by-name/cache
 /efs		ext4		/dev/block/bootdevice/by-name/efs		flags=backup=1;display="EFS"
