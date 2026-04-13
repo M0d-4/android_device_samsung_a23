@@ -36,12 +36,12 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 #<src>                                                 <mnt_point>            <type>  <mnt_flags and options>                            <fs_mgr_flags>
-/dev/block/mapper/system    /system    f2fs    ro    wait,logical,first_stage_mount
-/dev/block/mapper/system    /system    ext4    ro    wait,logical,first_stage_mount
-/dev/block/mapper/system    /system    erofs   ro    wait,logical,first_stage_mount
-/dev/block/mapper/product   /product   f2fs    ro    wait,logical,first_stage_mount
-/dev/block/mapper/vendor    /vendor    f2fs    ro    wait,logical,first_stage_mount
-/dev/block/mapper/odm       /odm       f2fs    ro    wait,logical,first_stage_mount
+system	/system	f2fs	ro	wait,logical,first_stage_mount
+system	/system	ext4	ro	wait,logical,first_stage_mount
+system	/system	erofs	ro	wait,logical,first_stage_mount
+product	/product	f2fs	ro	wait,logical,first_stage_mount
+vendor	/vendor	f2fs	ro	wait,logical,first_stage_mount
+odm	/odm	f2fs	ro	wait,logical,first_stage_mount
 
 /dev/block/by-name/metadata	/metadata	ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic,sync	wait,formattable,first_stage_mount,check
 /dev/block/bootdevice/by-name/userdata                 /data                  f2fs    noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678,inlinecrypt    latemount,wait,check,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,quota,reservedsize=128M,sysfs_path=/sys/devices/platform/soc/1d84000.ufshc,checkpoint=fs,keydirectory=/metadata/vold/metadata_encryption
