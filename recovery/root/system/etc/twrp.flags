@@ -7,7 +7,7 @@
 
 /system   f2fs    /dev/block/mapper/system     flags=wipeingui;display="System";backup=1
 /odm_root           f2fs    /dev/block/mapper/odm         flags=wipeingui;display="ODM";backup=1
-/product_root       f2fs    /dev/block/mapper/product     flags=wipeingui;display="Product";backup=1
+/product       f2fs    /dev/block/mapper/product     flags=wipeingui;display="Product";backup=1
 /vendor_root   f2fs    /dev/block/mapper/vendor      flags=wipeingui;display="Vendor";backup=1
 /system_image  emmc    /dev/block/mapper/system     flags=backup=0;flashimg=1;display="System Image"
 /odm_image     emmc    /dev/block/mapper/odm         flags=backup=0;flashimg=1;display="ODM Image"
@@ -28,6 +28,6 @@
 /persist	ext4		/dev/block/bootdevice/by-name/persist		flags=fsflags=ro;display="Persist"
 
 # Removable partitions
-/external_sd	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=storage;wipeingui;removable
-/usb-otg	auto		/dev/block/sdg1		/dev/block/sdg		flags=storage;wipeingui;removable
+/external_sd	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=storage;wipeingui;removable;display="MicroSD card"
+/usb-otg	auto		/dev/block/sdg1		/dev/block/sdg		flags=display="USB-OTG";storage;wipeingui;removable
 
