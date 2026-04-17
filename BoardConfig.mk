@@ -141,6 +141,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 # TWRP Configuration
 TW_DEVICE_VERSION := Mod4
 TW_THEME := portrait_hdpi
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 306
