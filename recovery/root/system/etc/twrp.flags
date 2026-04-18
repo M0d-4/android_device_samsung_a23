@@ -5,7 +5,7 @@
 /recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1
 /vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
 
-/system_root   f2fs    /dev/block/mapper/system     flags=wipeingui;display="System"
+/system_part   f2fs    /dev/block/mapper/system     flags=wipeingui;display="System"
 /odm_root           f2fs    /dev/block/mapper/odm         flags=wipeingui;display="ODM"
 /product_root       f2fs    /dev/block/mapper/product     flags=wipeingui;display="Product"
 /vendor_root   f2fs    /dev/block/mapper/vendor      flags=wipeingui;display="Vendor"
