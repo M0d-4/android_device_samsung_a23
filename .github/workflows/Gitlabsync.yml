@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - android-12.1
+  workflow_dispatch:
  
 jobs:
   sync:
