@@ -24,7 +24,7 @@ $(call inherit-product, device/samsung/a23/device.mk)
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a23/recovery/root,recovery/root)
 
 PRODUCT_DEVICE := a23
-PRODUCT_NAME := omni_a23
+PRODUCT_NAME := twrp_a23
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-A235
 PRODUCT_MANUFACTURER := samsung
