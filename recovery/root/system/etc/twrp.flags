@@ -5,12 +5,14 @@
 /recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1
 /vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
 
-/system        f2fs         /dev/block/mapper/system        flags=wipeingui;display="System"
-/odm           f2fs         /dev/block/mapper/odm           flags=wipeingui;display="ODM"
-/vendor        f2fs         /dev/block/mapper/vendor        flags=wipeingui;display="Vendor"
-/system_image	  emmc 		/dev/block/bootdevice/by-name/system		flags=backup=1;flashimg=1;display="System Image"
-/odm_image	  emmc 		/dev/block/bootdevice/by-name/odm		flags=backup=1;flashimg=1;display="ODM Image"
-/vendor_image	  emmc		 /dev/block/bootdevice/by-name/vendor		flags=backup=1;flashimg=1;display="Vendor Image"
+/system_part   f2fs    /dev/block/mapper/system     flags=wipeingui;display="System"
+/odm_root           f2fs    /dev/block/mapper/odm         flags=wipeingui;display="ODM"
+/product_root       f2fs    /dev/block/mapper/product     flags=wipeingui;display="Product"
+/vendor_root   f2fs    /dev/block/mapper/vendor      flags=wipeingui;display="Vendor"
+/system_image  emmc    /dev/block/mapper/system     flags=backup=1;flashimg=1;display="System Image"
+/odm_image     emmc    /dev/block/mapper/odm         flags=backup=1;flashimg=1;display="ODM Image"
+/product_image emmc    /dev/block/mapper/product     flags=backup=1;flashimg=1;display="Product Image"
+/vendor_image  emmc    /dev/block/mapper/vendor      flags=backup=1;flashimg=1;display="Vendor Image"
 
 /cache		ext4		/dev/block/bootdevice/by-name/cache
 /efs		ext4		/dev/block/bootdevice/by-name/efs		flags=backup=1;display="EFS"
@@ -26,6 +28,6 @@
 /persist	ext4		/dev/block/bootdevice/by-name/persist		flags=fsflags=ro;display="Persist"
 
 # Removable partitions
-/external_sd	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=storage;wipeingui;removable
-/usb-otg	auto		/dev/block/sdg1		/dev/block/sdg		flags=storage;wipeingui;removable
+/external_sd	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=storage;wipeingui;removable;display="MicroSD card"
+/usb-otg	auto		/dev/block/sdg1		/dev/block/sdg		flags=display="USB-OTG";storage;wipeingui;removable
 

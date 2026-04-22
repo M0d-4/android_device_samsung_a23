@@ -9,6 +9,13 @@ LOCAL_PATH := device/samsung/a23
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# sideloading
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    update_engine \
+    update_engine_sideload \
+    update_verifier
+
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
 
@@ -27,6 +34,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
 
 # Dependencies
 TARGET_RECOVERY_DEVICE_MODULES += \
