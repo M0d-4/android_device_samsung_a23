@@ -13,6 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
+
+      - name: Unshallow if needed
+        run: git fetch --unshallow || true
  
       - uses: adambirds/sync-github-to-gitlab-action@v1.1.0
         with:
