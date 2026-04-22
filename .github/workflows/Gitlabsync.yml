@@ -1,7 +1,21 @@
-steps:
-    - uses: actions/checkout@v2
-    - uses: adambirds/sync-github-to-gitlab-action@v1.1.0
-      with:
-        destination_repository: git@gitlab.com:Mod4-Da-GOAT/android_device_samsung_a23-twrp.git
-        destination_branch_name: android-12.1
-        destination_ssh_key: ${{ secrets.GITLAB_SSH_KEY }}
+name: Sync to GitLab
+ 
+on:
+  push:
+    branches:
+      - android-12.1
+ 
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+ 
+      - uses: adambirds/sync-github-to-gitlab-action@v1.1.0
+        with:
+          destination_repository: git@gitlab.com:Mod4-Da-GOAT/android_device_samsung_a23-twrp.git
+          destination_branch_name: android-12.1
+          destination_ssh_key: ${{ secrets.GITLAB_SSH_KEY }}
