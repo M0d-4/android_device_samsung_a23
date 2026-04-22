@@ -31,7 +31,5 @@ export OF_PATCH_AVB20=1
 export OF_FLASHLIGHT_ENABLE=0
 export OF_STATUS_H=122
 export OF_ENABLE_FRP_ADDON=1
-export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 export OF_USE_DMCTL=1
 
