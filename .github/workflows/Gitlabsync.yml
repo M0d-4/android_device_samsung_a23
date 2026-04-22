@@ -1,15 +1,15 @@
 name: Sync to GitLab
- 
+
 on:
   push:
     branches:
       - android-12.1
   workflow_dispatch:
- 
+
 jobs:
   sync:
     runs-on: ubuntu-latest
- 
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -17,7 +17,14 @@ jobs:
 
       - name: Unshallow if needed
         run: git fetch --unshallow || true
- 
+
+      - name: Remove workflow file before sync
+        run: |
+          git rm --cached .github/workflows/Gitlabsync.yml
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+          git commit -m "Remove sync workflow before GitLab push" || true
+
       - uses: adambirds/sync-github-to-gitlab-action@v1.1.0
         with:
           destination_repository: git@gitlab.com:Mod4-Da-GOAT/android_device_samsung_a23-twrp.git
