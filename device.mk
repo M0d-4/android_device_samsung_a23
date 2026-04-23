@@ -5,7 +5,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-LOCAL_PATH := device/samsung/a23
+DEVICE_PATH := device/samsung/a23
+
+# some OrangeFox-specific settings
+$(call inherit-product, $(DEVICE_PATH)/fox_a23.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
