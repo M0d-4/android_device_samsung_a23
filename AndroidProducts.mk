@@ -7,6 +7,7 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_a23.mk \
+    $(LOCAL_DIR)/omni_a23.mk \
 
 COMMON_LUNCH_CHOICES := \
    twrp_a23-ap2a-user \
