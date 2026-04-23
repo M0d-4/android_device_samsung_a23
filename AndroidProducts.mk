@@ -12,3 +12,4 @@ COMMON_LUNCH_CHOICES := \
    twrp_a23-ap2a-user \
    twrp_a23-ap2a-userdebug \
    twrp_a23-ap2a-eng \
+   omni_a23-ap2a-eng
