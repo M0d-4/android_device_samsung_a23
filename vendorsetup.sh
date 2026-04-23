@@ -21,26 +21,20 @@ FDEVICE="a23"
 #set -o xtrace
 
 fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
-   if [ -n "$chkdev" ]; then 
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep -w $FDEVICE)
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
+	export script_path="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+	if echo "$script_path" | grep -q "$FDEVICE"; then
+		FOX_BUILD_DEVICE="$FDEVICE"
+	elif echo "$0" | grep -q "$FDEVICE"; then
+		FOX_BUILD_DEVICE="$FDEVICE"
+	fi
 }
 
-if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
-   fox_get_target_device
+if [ -z "$FOX_BUILD_DEVICE" ]; then
+	fox_get_target_device
 fi
 
-
-if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
-	if [ -z "$THIS_DEVICE" ]; then
-		echo "ERROR! This script requires bash. Run '/bin/bash' and build again."
-		exit 1
-	fi
-
+if [ "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
+	echo "Detected build device: $FOX_BUILD_DEVICE"
   # OrangeFox Addons
   export FOX_ENABLE_APP_MANAGER=1
 
@@ -57,9 +51,11 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
   export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
   export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
   export FOX_RECOVERY_INSTALL_PARTITION="/dev/block/by-name/recovery"
+  export FOX_ENABLE_KERNELSU_SUPPORT=1
+  export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=1
+  export FOX_ENABLE_SUKISU_SUPPORT=1
 
 
-	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
-		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
-	fi
+else
+	echo "I: vendorsetup.sh skipped; device mismatch or environment issue."
 fi
