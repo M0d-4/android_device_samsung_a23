@@ -1,5 +1,5 @@
 # Maintainer Name
-OF_MAINTAINER := "Mod4"
+OF_MAINTAINER := Mod4
 
 # partition settings
 OF_FORCE_PREBUILT_KERNEL := 1
