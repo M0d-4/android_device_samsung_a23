@@ -28,6 +28,6 @@
 /persist	ext4		/dev/block/bootdevice/by-name/persist		flags=fsflags=ro;display="Persist"
 
 # Removable partitions
-/external_sd	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=storage;wipeingui;removable;display="MicroSD card"
-/usb-otg	auto		/dev/block/sdg1		/dev/block/sdg		flags=display="USB-OTG";storage;wipeingui;removable
-
+/storage	auto    	/data/media/0                  		     	flags=backup=1;display="Internal Storage";usermrf;fsflags="bind,utf8";removable
+/sdcard1	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=display="MicroSD";storage;wipeingui;removable
+/usb_otg	auto    	/dev/block/sdg1       	/dev/block/sdh1         flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
