@@ -8,24 +8,25 @@
 # Release name
 PRODUCT_RELEASE_NAME := a23
 
-# Inherit from common AOSP config
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+# Default device path for tree
+DEVICE_PATH := device/samsung/$(PRODUCT_RELEASE_NAME)
 
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+# Inherit device configuration
+$(call inherit-product, $(DEVICE_PATH)/device.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/twrp/config/common.mk)
+# Inherit fox flags
+$(call inherit-product-if-exists, $(DEVICE_PATH)/fox_a23.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/a23/device.mk)
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a23/recovery/root,recovery/root)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(DEVICE_PATH)/recovery/root,recovery/root)
 
-PRODUCT_DEVICE := a23
-PRODUCT_NAME := twrp_a23
-PRODUCT_BRAND := samsung
+
+## Device identifier. This must come after all inclusions
+PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
+PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_MODEL := SM-A235
+PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
