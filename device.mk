@@ -5,12 +5,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/samsung/a23
+# Inherit from common AOSP config
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 
 # some OrangeFox-specific settings
 $(call inherit-product, $(DEVICE_PATH)/fox_a23.mk)
 
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
+# Configure gsi_keys.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # sideloading
 PRODUCT_PACKAGES += \
@@ -19,11 +22,21 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
+
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 30
+
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # fastbootd
 TW_INCLUDE_FASTBOOTD := true
