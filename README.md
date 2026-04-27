@@ -42,7 +42,7 @@ It was released in March 2022.
 
 ---
 ## Thanks to
-@[xenoZ0x](https://github.com/xenoZ0x) and [TeamWin](https://github.com/TeamWin)
+[xenoZ0x](https://github.com/xenoZ0x) and [TeamWin](https://github.com/TeamWin)
 For the TWRP tree on which this one is based
 
 ---
