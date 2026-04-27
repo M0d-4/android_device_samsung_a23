@@ -19,10 +19,6 @@ It was released in March 2022.
 | Battery                        | 5000mAh Li-Po (non-removable), 25W fast charge                                            |
 | Display                        | 6.6 inches, 104.9 cm2 (~82.5% ratio) 1080 x 2408 pixels, 20:9 ratio (~400 ppi density)    |
 
-## Device picture
-
-<img src="https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a23-2.jpg" width="45%"/>
-
 ---
 # Flashing
 
@@ -46,7 +42,7 @@ It was released in March 2022.
 
 ---
 ## Thanks to
-@[mrx7014](https://github.com/mrx7014) and
+@[xenoZ0x](https://github.com/xenoZ0x) and [TeamWin](https://github.com/TeamWin)
 For the TWRP tree on which this one is based
 
 ---
