@@ -1,4 +1,4 @@
-#!/sbin/sh
+#!/system/bin/sh
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,17 +13,54 @@
 # limitations under the License.
 #
 
-mkdir -p "/tmp/vendor";
-mount -w "/dev/block/mapper/vendor" "/tmp/vendor";
+DEBUG=0; # change to 0 for release builds
+[ "$DEBUG" = "1" ] && set -o xtrace;
 
-if [ -f "/tmp/vendor/recovery-from-boot.p" ]; then
-  echo "I:postrecoveryboot: Removing stock recovery file in /vendor to prevent the stock ROM from replacing TWRP." >> /tmp/recovery.log;
-  rm "/tmp/vendor/bin/install-recovery.sh";
-  rm "/tmp/vendor/etc/init/vendor_flash_recovery.rc";
-  rm "/tmp/vendor/recovery-from-boot.p";
+
+LOGMSG() {
+	echo "$@" >> /tmp/recovery.log;
+}
+
+# do we have a pristine stock boot partition (ie, unpatched by us)?
+has_unpatched_stock_boot_partition() {
+	local tempdir=/tmp/fox_vendor_tempdir;
+	local res=0;
+	rm -rf $tempdir;
+	mkdir -p $tempdir;
+	mount -r /dev/block/mapper/vendor $tempdir >/dev/null 2>&1;
+	if [ "$?" = "0" -a -f "$tempdir/bin/install-recovery.sh" ]; then
+		BOOT_HASH=$(sha1sum "/dev/block/by-name/boot" | cut -d ' ' -f 1);
+		EXPECTED_BOOT_HASH=$(sed -n '5p' "$tempdir/bin/install-recovery.sh" | cut -d ':' -f 4 | sed 's/ .*//');
+		[ "$BOOT_HASH" = "$EXPECTED_BOOT_HASH" ] && res=1; # pristine - we need to patch it with the multidisabler
 fi;
+	umount $tempdir >/dev/null 2>&1;
+	rm -rf $tempdir;
+	echo "$res";
+}
 
-umount "/tmp/vendor";
-rm -r "/tmp/vendor";
+disable_stock_recovery() {
+	local tempdir=/tmp/fox_vendor_tempdir2;
+	local F="$tempdir/recovery-from-boot.p";
 
+  	rm -rf $tempdir;
+	mkdir -p $tempdir;
+	mount -w /dev/block/mapper/vendor $tempdir >/dev/null 2>&1;
+	if [ -w $F ]; then
+		LOGMSG "I:OrangeFox: Removing stock recovery file in /vendor to prevent the stock ROM from replacing OrangeFox.";
+		rm -f $F;
+		rm -f $tempdir/bin/install-recovery.sh;
+		rm -f $tempdir/etc/init/vendor_flash_recovery.rc;
+	fi
+	umount $tempdir >/dev/null 2>&1;
+	rm -rf $tempdir;
+	sleep 0.2s;
+}
+
+# ----
+need_to_patch_boot=$(has_unpatched_stock_boot_partition);
+if [ "$need_to_patch_boot" = "1" ]; then
+	/system/bin/multidisabler;
+else
+	disable_stock_recovery;
+fi
 exit 0;
