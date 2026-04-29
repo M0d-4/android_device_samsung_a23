@@ -1,0 +1,50 @@
+#!/system/bin/sh
+#
+# Copyright (C) 2025 The OrangeFox Recovery Project
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Original source: https://github.com/Gabriel2392/android_device_samsung_a33x/blob/android-12.1/recovery/root/system/bin/multidisabler
+#
+
+set -e;
+
+LOGMSG() {
+	echo "$@";
+	echo "$@" >> /tmp/recovery.log;
+}
+
+patch_boot() {
+local tempdir=/tmp/fox_multi_disabler;
+local boot_block=/dev/block/by-name/boot;
+
+	LOGMSG "Disabling stock recovery restoration...";
+	mkdir -p $tempdir;
+	cd $tempdir;
+
+	LOGMSG "Unpacking the boot image ...";
+	dd if=$boot_block of=$tempdir/old-boot.img;
+	magiskboot unpack -h $tempdir/old-boot.img;
+
+	LOGMSG "Repacking the boot image ...";
+	magiskboot repack $tempdir/old-boot.img $tempdir/new-boot.img;
+	magiskboot cleanup;
+	cd /tmp/;
+
+	# verify whether anything has changed
+	LOGMSG "Comparing boot images ...";
+	local res=$(cmp $tempdir/old-boot.img $tempdir/new-boot.img);
+	if [ -n "$res" ]; then
+		LOGMSG "Reflashing the boot image ...";
+		dd if=$tempdir/new-boot.img of=$boot_block;
+	else
+		LOGMSG "The boot images are identical. Skip reflashing ...";
+	fi
+
+	rm -rf $tempdir;
+	LOGMSG "Finished.";
+}
+
+# -- #
+patch_boot;
+exit 0;
+#
