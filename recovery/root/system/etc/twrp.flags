@@ -29,5 +29,5 @@
 
 # Removable partitions
 /storage	auto    	/data/media/0                  		     	flags=backup=1;display="Internal Storage";usermrf;fsflags="bind,utf8";removable
-/sdcard1	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=display="MicroSD";storage;wipeingui;removable
+/sdcard1	auto		/dev/block/mmcblk0p1	/dev/block/mmcblk1	flags=display="MicroSD Card";storage;wipeingui;removable
 /usb_otg	auto    	/dev/block/sdg1       	/dev/block/sdh1         flags=fsflags=utf8;display="USB-Storage";storage;wipeingui;removable
