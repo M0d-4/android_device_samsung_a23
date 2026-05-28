@@ -68,9 +68,6 @@ fi
   export FOX_USE_DATE_BINARY=1
   export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
   export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-  export FOX_ENABLE_KERNELSU_SUPPORT=1
-  export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=1
-  export FOX_ENABLE_SUKISU_SUPPORT=1
   export FOX_REPLACE_TOOLBOX_GETPROP=1
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
