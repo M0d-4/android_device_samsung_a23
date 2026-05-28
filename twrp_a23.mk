@@ -11,9 +11,6 @@ PRODUCT_RELEASE_NAME := a23
 # Default device path for tree
 DEVICE_PATH := device/samsung/$(PRODUCT_RELEASE_NAME)
 
-# Inherit device configuration
-$(call inherit-product, $(DEVICE_PATH)/device.mk)
-
 # Inherit fox flags
 $(call inherit-product-if-exists, $(DEVICE_PATH)/fox_a23.mk)
 
