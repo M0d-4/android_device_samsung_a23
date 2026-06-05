@@ -2,11 +2,10 @@
 /odm_root           f2fs    /dev/block/mapper/odm         flags=wipeingui;display="ODM";backup=0
 /product_root       f2fs    /dev/block/mapper/product     flags=wipeingui;display="Product";backup=0
 /vendor_root   f2fs    /dev/block/mapper/vendor      flags=wipeingui;display="Vendor";backup=0
-/odm_image     emmc    /dev/block/mapper/odm         flags=backup=1;flashimg=1;display="ODM Image"
 /system_image           emmc		/dev/block/mapper/system			    flags=backup=1;flashimg;display="System Image"
 /vendor_image           emmc		/dev/block/mapper/vendor			    flags=backup=1;flashimg;display="Vendor Image"
 /product_image          emmc		/dev/block/mapper/product			    flags=backup=1;flashimg;display="Product Image"
-/system_ext_image       emmc		/dev/block/mapper/system_ext			    flags=backup=1;flashimg;display="System_EXT Image"
+/odm_image     emmc    /dev/block/mapper/odm         flags=backup=1;flashimg=1;display="ODM Image"
 
 # partitions
 /dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678,inlinecrypt	latemount,wait,quota,check,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,reservedsize=128M,checkpoint=fs,
