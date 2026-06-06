@@ -66,13 +66,25 @@ fi
   export FOX_USE_ZSTD_BINARY=1
   export FOX_USE_BUSYBOX_BINARY=1
   export FOX_USE_DATE_BINARY=1
+  export FOX_REPLACE_TOOLBOX_GETPROP=1
+  export FOX_USE_UPDATED_MAGISKBOOT=1
+  export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
+  export FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
   export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
   export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-  export FOX_REPLACE_TOOLBOX_GETPROP=1
+  export FOX_VANILLA_BUILD=1
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
 	fi
 fi
 
+# partitions
+export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+export FOX_BUILD_TYPE="Unofficial"
+export TARGET_DEVICE_ALT="a23"
+export FOX_VERSION="R12.1"
+# no special Samsung stuff (For Fix Img Size)
+export FOX_NO_SAMSUNG_SPECIAL="1"
 
