@@ -78,10 +78,8 @@ else
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
 	fi
 fi
-
+#
 # partitions
-export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
-export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 export FOX_BUILD_TYPE="Unofficial"
 export TARGET_DEVICE_ALT="a23"
 export FOX_VERSION="R12.1"
