@@ -79,8 +79,7 @@ else
 	fi
 fi
 #
-# partitions
+# extra stuff
 export FOX_BUILD_TYPE="Unofficial"
 export TARGET_DEVICE_ALT="a23"
-export FOX_VERSION="R12.1"
 
