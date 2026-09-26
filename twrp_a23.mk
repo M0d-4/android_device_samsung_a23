@@ -20,6 +20,12 @@ $(call inherit-product-if-exists, $(DEVICE_PATH)/fox_a23.mk)
 # Inherit device configuration
 $(call inherit-product, device/samsung/a23/device.mk)
 
+# Inherit some common twrp stuff.
+$(call inherit-product-if-exists, vendor/twrp/config/common.mk)
+
+# Inherit some common pbrp stuff.
+$(call inherit-product-if-exists, vendor/pb/config/common.mk)
+
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(DEVICE_PATH)/recovery/root,recovery/root)
 
 
