@@ -29,6 +29,21 @@ import /init.recovery.qcom_decrypt.rc
 import /init.recovery.display.rc
 
 on early-init
+    chmod 0755 /sbin/bash
+    chmod 0755 /sbin/busybox
+    chmod 0755 /sbin/magiskboot
+    chmod 0755 /sbin/aapt
+    chmod 0755 /sbin/gnutar
+    chmod 0755 /sbin/gnused
+    chmod 0755 /sbin/gnudate
+    chmod 0755 /sbin/zstd
+    chmod 0755 /sbin/lz4
+    chmod 0755 /sbin/fb2png
+    chmod 0755 /sbin/foxstart.sh
+    chmod 0755 /sbin/decrypt
+    chmod 0755 /sbin/setdate
+    chmod 0755 /sbin/setgovernor
+    chmod 0755 /sbin/fix_date
     chmod 0777 /system/bin/linkblobs.sh
     start linkblobs
 
