@@ -52,6 +52,7 @@ if [ -z "$FOX_BUILD_DEVICE" ]; then
 	fox_get_target_device
 fi
 
+if [ -n "$FOX_BUILD_DEVICE" ]; then
     # Binaries & Tools
   export TW_DEFAULT_LANGUAGE="en"
   export LC_ALL="C"
@@ -82,4 +83,3 @@ fi
 # extra stuff
 export FOX_BUILD_TYPE="Unofficial"
 export TARGET_DEVICE_ALT="a23"
-
