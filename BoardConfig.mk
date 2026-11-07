@@ -45,7 +45,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x03400000
-BOARD_KERNEL_TAGS_OFFSET := 0x03240000
+BOARD_KERNEL_TAGS_OFFSET := 0x03300000
 
 BOARD_KERNEL_CMDLINE := \
 	console=null \
@@ -68,8 +68,8 @@ BOARD_MKBOOTIMG_ARGS := \
     --board SRPUK11C005 \
     --kernel_offset 0x00008000 \
     --ramdisk_offset 0x03400000 \
-    --tags_offset 0x03240000 \
-    --dtb_offset 0x03300000 \
+    --tags_offset 0x03300000 \
+    --dtb_offset 0x03380000 \
     --header_version 2
 BOARD_ROOT_EXTRA_FOLDERS := \
     carrier \
