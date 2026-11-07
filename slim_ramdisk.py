@@ -1,11 +1,4 @@
 #!/usr/bin/env python3
-"""Shrink a gzip'd newc-cpio recovery ramdisk in place so Samsung's ABL accepts the image.
-
-Drops the stock-recovery localized text PNGs (res/images/*_text.png, unused by the
-TWRP/OrangeFox GUI, ~3 MB compressed) and swaps the 5 MB CJK fallback font for a
-small valid TTF (keeps the filename so ui.xml references still resolve).
-Usage: slim_ramdisk.py ramdisk-recovery.img
-"""
 import gzip, io, re, stat, sys
 
 path = sys.argv[1]
