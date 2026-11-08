@@ -69,11 +69,13 @@ if [ -n "$FOX_BUILD_DEVICE" ]; then
   export FOX_USE_DATE_BINARY=1
   export FOX_REPLACE_TOOLBOX_GETPROP=1
   export FOX_USE_UPDATED_MAGISKBOOT=1
-  export OF_SKIP_DECRYPTED_ADOPTED_STORAGE=1
   export FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
   export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
   export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
   export FOX_USE_GREP_BINARY=1
+  export FOX_ALLOW_EARLY_SETTINGS_LOAD=1
+  export FOX_USE_FSCK_EROFS_BINARY=1
+  export FOX_USE_PATCHELF_BINARY=1
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
