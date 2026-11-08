@@ -73,7 +73,6 @@ if [ -n "$FOX_BUILD_DEVICE" ]; then
   export FOX_RECOVERY_PRODUCT_PARTITION="/dev/block/mapper/product"
   export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
   export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-  export FOX_VANILLA_BUILD=1
 else
 	if [ -z "$FOX_BUILD_DEVICE" -a -z "$BASH_SOURCE" ]; then
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
