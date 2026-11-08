@@ -61,6 +61,8 @@ on fs
 
 on boot
     start health-hal-2-1
+    mkdir /tmp/flashlight 0777 system system
+    ln -s /sys/devices/platform/soc/4a84000.i2c/i2c-34/34-003d/leds-s2mu106/leds/fled-s2mu106/fled_torch_curr /tmp/flashlight/brightness
 
 service linkblobs /system/bin/linkblobs.sh
     user root
