@@ -162,7 +162,6 @@ TW_USE_EXTERNAL_STORAGE := true
 TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_FB2PNG := true
 TW_HAS_EDL_MODE := true
-TW_NO_SCREEN_BLANK := true
 
 # TWRP Configuration: Logd
 TWRP_EVENT_LOGGING := true
