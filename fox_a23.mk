@@ -30,7 +30,7 @@ OF_USE_LEGACY_BATTERY_SERVICES := 1
 
 # Enable the flashlight
 OF_FLASHLIGHT_ENABLE := 1
-OF_FL_PATH1 := /sys/devices/virtual/camera/flash/rear_flash
+OF_FL_PATH1 := /tmp/of_torch
 
 # Extra Features
 OF_DISABLE_MIUI_SPECIFIC_FEATURES := 1
