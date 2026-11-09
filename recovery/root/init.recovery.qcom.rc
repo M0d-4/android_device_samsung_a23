@@ -61,6 +61,10 @@ on fs
 
 on boot
     start health-hal-2-1
+    chown system system /sys/devices/virtual/camera/flash/rear_flash
+    chmod 0666 /sys/devices/virtual/camera/flash/rear_flash
+    mkdir /tmp/of_torch 0777 system system
+    symlink /sys/devices/virtual/camera/flash/rear_flash /tmp/of_torch/brightness
 
 service linkblobs /system/bin/linkblobs.sh
     user root
