@@ -51,7 +51,9 @@ on init
     setprop prepdecrypt.setpatch true
     write /sys/class/backlight/panel0-backlight/brightness 200
     mkdir /tmp/of_torch 0777 root root
-    symlink /sys/devices/virtual/camera/flash/rear_flash /tmp/of_torch/brightness
+    write /tmp/of_torch/max_brightness 1
+    chmod 0666 /tmp/of_torch/max_brightness
+    symlink /sys/class/camera/flash/rear_flash /tmp/of_torch/brightness
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -62,6 +64,8 @@ on fs
     mount vfat /dev/block/bootdevice/by-name/apnhlos /vendor/firmware_mnt ro
 
 on boot
+    chown root root /sys/class/camera/flash/rear_flash
+    chmod 0666 /sys/class/camera/flash/rear_flash
     start health-hal-2-1
 
 service linkblobs /system/bin/linkblobs.sh
